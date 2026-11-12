@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "飞飞小助手（原生版 V4）",
+  "version": "2.1.3",
+  "description": "飞飞小助手的独立 Edge/Chrome 原生扩展，保留原脚本界面与功能。",
+  "permissions": ["storage"],
+  "background": { "service_worker": "background.js" },
+  "action": { "default_title": "飞飞小助手设置" },
+  "options_page": "options/options.html",
+  "content_scripts": [
+    {
+      "matches": ["*://*.chaoxing.com/*", "*://*.edu.cn/*", "*://*.nbdlib.cn/*", "*://*.hnsyu.net/*", "*://*.ac.cn/*"],
+      "exclude_matches": ["https://study.cqie.edu.cn/stu/pages/MyCourse/Study*"],
+      "js": ["content/feifei-bootstrap.js"],
+      "run_at": "document_end",
+      "all_frames": true
+    }
+  ],
+  "host_permissions": ["*://*.chaoxing.com/*", "*://*.edu.cn/*", "*://*.nbdlib.cn/*", "*://*.hnsyu.net/*", "*://*.ac.cn/*", "https://mooc1-1.chaoxing.com/*", "https://mooc1.chaoxing.com/*", "https://mooc1-2.chaoxing.com/*", "https://passport2-api.chaoxing.com/*", "http://14.29.190.187:54223/*", "https://cx.icodef.com/*"],
+  "web_accessible_resources": [{
+    "resources": ["content/feifei-runtime.js"],
+    "matches": ["*://*.chaoxing.com/*", "*://*.edu.cn/*", "*://*.nbdlib.cn/*", "*://*.hnsyu.net/*", "*://*.ac.cn/*"]
+  }]
+}
